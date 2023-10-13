@@ -57,6 +57,8 @@ namespace Circustrein.test
 
 			TestIt _Test3 = new TestIt();
 
+			//act
+
 			Assert.Equal(MaxLength, _Test3.TrainLength(Animals));
 		}
 		

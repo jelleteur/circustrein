@@ -34,7 +34,7 @@ namespace circustrein
             }
         }
 
-        public int FillCart(int animalSize) => CartSize = CartSize - animalSize;
+        public int FillCart(int animalSize) => CartSize -= animalSize;
 
         public bool AddCarnivore(_Diet diet, _Size size)
         {
