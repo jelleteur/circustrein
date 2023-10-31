@@ -13,6 +13,8 @@ namespace circustrein
         public bool ContainsCarnivore;
         public int SizeCarnivore;
         public int SmallestAnimal;
+        public string AnimalsInside;
+
 
         public Cart()
         {
@@ -20,11 +22,12 @@ namespace circustrein
             ContainsCarnivore = false;
             SizeCarnivore = 0;
             SmallestAnimal = 10;
+            AnimalsInside = "";
         }
 
         public bool CheckCart(int animalSize)
         {
-            if(CartSize - animalSize >= 0)
+            if (CartSize - animalSize >= 0)
             {
                 return true;
             }
@@ -34,11 +37,15 @@ namespace circustrein
             }
         }
 
-        public int FillCart(int animalSize) => CartSize -= animalSize;
+        public int FillCart(int animalSize)
+        {
+            CartSize = CartSize - animalSize;
+            return CartSize;
+        }
 
         public bool AddCarnivore(_Diet diet, _Size size)
         {
-            if(diet == _Diet.carnivore)
+            if (diet == _Diet.carnivore)
             {
                 ContainsCarnivore = true;
                 SizeCarnivore = (int)size;
@@ -47,5 +54,60 @@ namespace circustrein
             return ContainsCarnivore;
         }
 
+        public bool AddToCart(Cart cart, Animal animal)
+        {
+            cart.FillCart((int)animal.GetSize());
+            cart.AnimalsInside = cart.AnimalsInside + animal.Name + " ";
+            return true;
+        }
+
+        public void ShowCartContent(Cart cart)
+        {
+            Console.WriteLine(cart.AnimalsInside);
+        }
+
+        public bool RunThroughCartSpace(Cart cart, Animal animal)
+        {
+            bool doesFit = cart.CheckCart((int)animal.GetSize());
+
+            bool isCarnivore = animal.IsCarnivore(animal.Diet);
+
+            if (doesFit)
+            {
+                if (cart.ContainsCarnivore && (animal.Diet != _Diet.carnivore))
+                {
+                    if ((int)animal.GetSize() > cart.SizeCarnivore)
+                    {
+                        return cart.AddToCart(cart, animal);
+                    }
+                }
+                else if (isCarnivore && !cart.ContainsCarnivore)
+                {
+                    if (cart.SmallestAnimal >= (int)animal.Size)
+                    {
+                        cart.AddCarnivore(animal.Diet, animal.Size);
+                        return cart.AddToCart(cart, animal);
+                    }
+
+                    else
+                    {
+                        cart.AddCarnivore(animal.Diet, animal.Size);
+                        return cart.AddToCart(cart, animal);
+                    }
+
+                }
+                else if (!isCarnivore && !cart.ContainsCarnivore)
+                {
+                    return cart.AddToCart(cart, animal);
+                }
+
+                else
+                {
+                    return false;
+                }
+            }
+
+            return false;
+        }
     }
 }

@@ -5,12 +5,12 @@ namespace Circustrein.test
 {
 	public class UnitTest1
 	{
-		Animal cs = new Animal(_Size.small, _Diet.carnivore);
-		Animal cm = new Animal(_Size.medium, _Diet.carnivore);
-		Animal cl = new Animal(_Size.large, _Diet.carnivore);
-		Animal hs = new Animal(_Size.small, _Diet.herbivore);
-		Animal hm = new Animal(_Size.medium, _Diet.herbivore);
-		Animal hl = new Animal(_Size.large, _Diet.herbivore);
+		Animal cs = new Animal("cat", _Size.small, _Diet.carnivore);
+		Animal cm = new Animal("wolf", _Size.medium, _Diet.carnivore);
+		Animal cl = new Animal("tiger", _Size.large, _Diet.carnivore);
+		Animal hs = new Animal("rabbit", _Size.small, _Diet.herbivore);
+		Animal hm = new Animal("horse", _Size.medium, _Diet.herbivore);
+		Animal hl = new Animal("elephant", _Size.large, _Diet.herbivore);
 
 
 
@@ -25,9 +25,9 @@ namespace Circustrein.test
 
 			int MaxLength = 2;
 
-			TestIt _Test = new TestIt();
+			Sort _Test = new Sort();
 
-			Assert.Equal(MaxLength, _Test.TrainLength(Animals));
+			Assert.Equal(MaxLength, _Test.SortList(Animals));
 		}
 
 		[Fact]
@@ -40,9 +40,9 @@ namespace Circustrein.test
 
 			int MaxLength = 2;
 
-			TestIt _Test= new TestIt();
+			Sort _Test= new Sort();
 
-			Assert.Equal(MaxLength, _Test.TrainLength(Animals));
+			Assert.Equal(MaxLength, _Test.SortList(Animals));
 		}
 
 		[Fact]
@@ -55,11 +55,11 @@ namespace Circustrein.test
 
 			int MaxLength = 4;
 
-			TestIt _Test3 = new TestIt();
+			Sort _Test3 = new Sort();
 
 			//act
 
-			Assert.Equal(MaxLength, _Test3.TrainLength(Animals));
+			Assert.Equal(MaxLength, _Test3.SortList(Animals));
 		}
 		
 		[Fact]
@@ -72,9 +72,9 @@ namespace Circustrein.test
 
 			int MaxLength = 5;
 
-			TestIt _Test = new TestIt();
+			Sort _Test = new Sort();
 
-			Assert.Equal(MaxLength, _Test.TrainLength(Animals));
+			Assert.Equal(MaxLength, _Test.SortList(Animals));
 		}
 
 		[Fact]
@@ -87,9 +87,9 @@ namespace Circustrein.test
 
 			int MaxLength = 2;
 
-			TestIt _Test = new TestIt();
+			Sort _Test = new Sort();
 
-			Assert.Equal(MaxLength, _Test.TrainLength(Animals));
+			Assert.Equal(MaxLength, _Test.SortList(Animals));
 		}
 
 		[Fact]
@@ -102,9 +102,9 @@ namespace Circustrein.test
 
 			int MaxLength = 3;
 
-			TestIt _Test = new TestIt();
+			Sort _Test = new Sort();
 
-			Assert.Equal(MaxLength, _Test.TrainLength(Animals));
+			Assert.Equal(MaxLength, _Test.SortList(Animals));
 		}
 
 		[Fact]
@@ -117,9 +117,9 @@ namespace Circustrein.test
 
 			int MaxLength = 13;
 
-			TestIt _Test = new TestIt();
+			Sort _Test = new Sort();
 
-			Assert.Equal(MaxLength, _Test.TrainLength(Animals));
+			Assert.Equal(MaxLength, _Test.SortList(Animals));
 		}
 
 		[Fact]
@@ -132,9 +132,9 @@ namespace Circustrein.test
 
 			int MaxLength = 0;
 
-			TestIt _Test = new TestIt();
+			Sort _Test = new Sort();
 
-			Assert.Equal(MaxLength, _Test.TrainLength(Animals));
+			Assert.Equal(MaxLength, _Test.SortList(Animals));
 		}
 	}
 }
