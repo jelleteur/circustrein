@@ -57,7 +57,7 @@ namespace circustrein
         public bool AddToCart(Cart cart, Animal animal)
         {
             cart.FillCart((int)animal.GetSize());
-            cart.AnimalsInside = cart.AnimalsInside + animal.Name + " ";
+            cart.AnimalsInside = cart.AnimalsInside + animal.GetName() + " ";
             return true;
         }
 
@@ -70,11 +70,11 @@ namespace circustrein
         {
             bool doesFit = cart.CheckCart((int)animal.GetSize());
 
-            bool isCarnivore = animal.IsCarnivore(animal.Diet);
+            bool isCarnivore = animal.IsCarnivore(animal.GetDiet());
 
             if (doesFit)
             {
-                if (cart.ContainsCarnivore && (animal.Diet != _Diet.carnivore))
+                if (cart.ContainsCarnivore && (animal.GetDiet() != _Diet.carnivore))
                 {
                     if ((int)animal.GetSize() > cart.SizeCarnivore)
                     {
@@ -83,15 +83,15 @@ namespace circustrein
                 }
                 else if (isCarnivore && !cart.ContainsCarnivore)
                 {
-                    if (cart.SmallestAnimal >= (int)animal.Size)
+                    if (cart.SmallestAnimal >= (int)animal.GetSize())
                     {
-                        cart.AddCarnivore(animal.Diet, animal.Size);
+                        cart.AddCarnivore(animal.GetDiet(), animal.GetSize());
                         return cart.AddToCart(cart, animal);
                     }
 
                     else
                     {
-                        cart.AddCarnivore(animal.Diet, animal.Size);
+                        cart.AddCarnivore(animal.GetDiet(), animal.GetSize());
                         return cart.AddToCart(cart, animal);
                     }
 

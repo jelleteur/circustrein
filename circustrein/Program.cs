@@ -1,5 +1,6 @@
 ﻿using circustrein;
 using System.Diagnostics;
+using System.Globalization;
 
 Animal cs = new Animal("cat", _Size.small, _Diet.carnivore);
 Animal cm = new Animal("wolf", _Size.medium, _Diet.carnivore);
@@ -10,7 +11,7 @@ Animal hl = new Animal("elephant", _Size.large, _Diet.herbivore);
 
 List<Animal> Animals = new List<Animal>
 {
-    hs, hs, hs, hs, hs, cs, hm, hm, hl
+    cs, hm, hm, hm, hl, hl
 };
 
 Sort Test = new Sort();
